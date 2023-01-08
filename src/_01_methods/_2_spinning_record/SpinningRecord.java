@@ -22,7 +22,7 @@ import processing.core.PImage;
  * 
  * 5. Make the record spin by increasing the variable from step 1.
  * 
- * 6. Call the rotateImage() method to rotate record by the specified amount
+ * 6. Call the rotateImage() method to rotate the record by the specified amount
  *    rotateImage(PImage image, int amountToRotate);
  * 
  * 7. Call the image() method to display the record image
@@ -35,11 +35,12 @@ import processing.core.PImage;
  * 10.Use the song.play() and song.stop() methods to play a song ONLY when
  *    the record is spinning.
  */
-int record = 0
+
 
 public class SpinningRecord extends PApplet {
     static final int WIDTH = 600;
     static final int HEIGHT = 600;
+    int spin = 0;
     
     Song song = new Song("awesomeTrack.mp3");
     PImage pictureOfRecord;
@@ -51,12 +52,16 @@ public class SpinningRecord extends PApplet {
 
     @Override
     public void setup() {
-        
+        pictureOfRecord = loadImage("images/record.png") ;
+            pictureOfRecord.resize(600, 600);
+
     }
 
     @Override
     public void draw() {
-        
+    	spin+=5;
+    	rotateImage(pictureOfRecord, spin);
+    	image(pictureOfRecord, 0, 0);
     }
 
     static public void main(String[] args) {
