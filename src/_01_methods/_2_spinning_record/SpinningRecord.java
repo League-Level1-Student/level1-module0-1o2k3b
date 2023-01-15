@@ -59,9 +59,16 @@ public class SpinningRecord extends PApplet {
 
     @Override
     public void draw() {
-    	spin+=5;
-    	rotateImage(pictureOfRecord, spin);
+
     	image(pictureOfRecord, 0, 0);
+   
+    	if(mousePressed) {
+    		rotateImage(pictureOfRecord, spin+=5);
+    		image(pictureOfRecord, 0, 0);
+    		song.play();
+    	} else {
+    		song.stop();
+    	}
     }
 
     static public void main(String[] args) {
