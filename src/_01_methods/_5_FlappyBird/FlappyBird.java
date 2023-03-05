@@ -11,12 +11,15 @@ import processing.core.PApplet;
 public class FlappyBird extends PApplet  {
     static final int WIDTH = 800;
     static final int HEIGHT = 600;
+
+int upperPipeHeight = (int) random(100, 400);
     int y = 0;
     int gravity = 1;
     int v = 0;
     int e = 0;
-    		
-    
+    int x = 698;		
+    int pg = 0;
+    int lowerY = upperPipeHeight + pg;		
     public void settings() {
         size(WIDTH, HEIGHT);
     }
@@ -24,17 +27,26 @@ public class FlappyBird extends PApplet  {
     @Override
     public void setup() {
         size(width, height);
+     String w = JOptionPane.showInputDialog("select a pixel amount, that will be the pixel gap");
+   pg = Integer.parseInt(w);
      
     }
 
     @Override
     public void draw() {
-      fill(0, 200, 55);
-      rect()
-    	background(70, 85, 30);  
-      fill(0, 0, 100);
-  stroke(0, 39, 52);
- int x = 25;
+    	Random R = new Random();
+    	fill(0, 0, 100); 
+    	background(70, 85, 30);
+    	fill(0, 120, 55);
+    	
+    	
+ rect(x-=5, 0, 100, upperPipeHeight);
+   fill(0, 120, 55);
+   rect(x-=5, 600, 100, lowerY);
+ if(x<=0) {
+	 x=698;
+	 upperPipeHeight = R.nextInt(400);
+ }
 if(mousePressed) {
 	v= -10;
 }
@@ -52,8 +64,8 @@ if(y == 600) {
   y =HEIGHT;
   
  }
- 
-      ellipse(x, y, 25, 25);
+ fill(0, 32, 58);
+      ellipse(100, y, 25, 25);
  
     
 
