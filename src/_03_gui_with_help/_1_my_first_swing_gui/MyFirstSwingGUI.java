@@ -27,23 +27,23 @@ window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// 5. Create and initialize an object of the JPanel class
 JPanel panel = new JPanel();  
 		// 6. Create and initialize an object of the JLabel class
-
+JLabel label = new JLabel();
 		// 7. Set the text of the JLabel to a lovely greeting.
-
+label.setText("Hello, kind sir!");;
 		// 8. Add the JPanel object to the JFrame
-
+window.add(panel);
 		// 9. Add the JLabel object to the JPanel
-
+panel.add(label);
 		// 10. Pack your JFrame.
-
+window.pack();
 		// 11. Run your program again. Do you see your message.
-
+//yes
 		// 12. Use the loadImage method to set the icon of the JLabel object.
-
+label.setIcon(loadImage());
 		// 13. Re-pack the JFrame object.
-
+window.pack();
 		// 14. Run the program one more time. Do you see the image?
-
+//yes
 	}
 
 	public ImageIcon loadImage() {
