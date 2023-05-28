@@ -1,3 +1,6 @@
+package _04_gui_from_scratch._3_sound_effects_machine;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 
 import javax.sound.sampled.AudioSystem;
@@ -6,15 +9,15 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class SOUNDAFFECTMACHINE {
+public class SOUNDAFFECTMACHINE implements ActionListener {
 	
-
-	public static void main(String[] args) {
+	JButton button = new JButton();
+	JButton glutton = new JButton();
+	JButton g = new JButton();
+	public void showButton(String[] args) {
 		JFrame frame = new JFrame();
 		JPanel panel = new JPanel();
-		JButton button = new JButton();
-		JButton glutton = new JButton();
-		JButton g = new JButton();
+		
 		button.addActionListener(this);
 		glutton.addActionListener(this);
 		g.addActionListener(this);
@@ -22,11 +25,12 @@ public class SOUNDAFFECTMACHINE {
 		panel.add(g);
 		panel.add(glutton);
 		panel.add(button);
+		frame.setVisible(true);
 		frame.pack();
 	}
 	
 	private void playSound(String soundFile) {
-		String path = "src/_03_gui_from_scratch/_3_sound_effects_machine/";
+		String path = "src/_04_gui_from_scratch/_3_sound_effects_machine/";
 			File sound = new File(path+soundFile);
 			if (sound.exists()) {
 				new Thread(() -> {
@@ -44,5 +48,19 @@ public class SOUNDAFFECTMACHINE {
 				System.out.println("File does not exist");
 			}
 		
+	}
+
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+if(button.equals(arg0.getSource())) {
+	playSound("aaaahh.wav");
+}
+if(glutton.equals(arg0.getSource())) {
+	playSound("awesomeTrack.mp3");
+}
+if(g.equals(arg0.getSource())) {
+	playSound("fart-01.wav");
+}
 	}
 }
